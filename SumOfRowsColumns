@@ -1,0 +1,148 @@
+<html>
+    <head>
+        <title>Submition Of Rows And Columns</title>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+
+        <style>
+
+            body
+            {
+                position: inherit;
+                margin: 0;
+                padding: 0;
+                border: 1px solid black;
+                width: 100%;
+                height: 100%;
+
+            }
+            h1
+            {
+                text-align: center;          
+                margin-top: 50px;   
+            }
+            div
+            {
+                margin-top: 50px;
+                margin-left: 500px;
+            }
+            table
+            {
+                height: 300px;
+                width: 300px; 
+                text-align: center;
+            }
+            .A1:hover
+			{
+				background: rgba(80, 80, 80, 0.2);
+			}
+            table tr td	
+			{
+				height: 80px;
+				width: 80px;
+			}
+
+            .btn
+            {
+                width: 100px;
+                height: 50px;
+                margin-left: 100px;
+                padding: 0px;
+            }
+        </style>
+        <script>
+            //Ans ->  //4 3 8
+                      //9 5 1
+                      //2 7 6
+            $(document).ready(function()
+            {
+                var d1=document.getElementById("TotalValues");
+                var turn=1;
+                $("#table tr td").click(function()
+                {
+                    if($(this).text() == "")
+                    {
+                        $(this).append(turn);
+                        turn++;
+                    }
+                    if($(this).text() == 9)
+                    {
+                            var table = document.getElementById("table"), sumrow = 0,sumcol=0, sumr=0, sumc=0, aryrow=[], arycol=[];
+                            //Sum of Rows 
+                            for(var a=0; a<3;a++)
+                            {
+                                for(var i = 0; i < table.rows.length; i++)
+                                {
+                                    var sumrow = sumrow + parseInt(table.rows[i].cells[a].innerHTML);
+                                }
+									sumr=sumrow;//store the sum of rows value in one variable...
+                                    aryrow.push(sumr);
+                                    console.log(aryrow);
+                                    console.log(sumr);
+                                    console.log("Sum Of Columns = " + sumrow);
+                                    sumrow=0;
+                                //Sum Of Colunms
+                                for(var c = 0; c < table.rows.length ; c++)
+                                {
+                                    sumcol = sumcol + parseInt(table.rows[a].cells[c].innerHTML);
+                                }
+                                          
+                                    sumc=sumcol;//store the sum of columns value in one varible...
+                                    aryrow.push(sumc);
+                                    console.log(aryrow);
+                                    console.log(sumc);
+                                    console.log("Sum Of Row = " + sumcol);
+                                    sumcol=0;
+                            }
+                            win();
+                            function win()
+                            {
+                                for(var i = 0; i < aryrow.length; i++)
+                                {
+                                    if(aryrow[i] == 15)
+                                    {
+                                        alert("You'r Win...!");
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        alert("You'r lose Please Try Again...!");
+                                        break;
+                                    }
+                                }
+                            }
+                    }
+
+                });
+            });
+        </script>
+    </head>
+
+    <body>
+        <h1>Submition Of Rows And Columns</h1>
+        
+        <div>
+            <table border="1px" id="table">
+                <tr>
+                    <td class="A1" id="A1"></td>
+                    <td class="A1" id="A2"></td>
+                    <td class="A1" id="A3"></td>
+                </tr>
+                <tr>
+                    <td class="A1" id="B1"></td>
+                    <td class="A1" id="B2"></td>
+                    <td class="A1" id="B3"></td>
+                </tr>
+                <tr>
+                    <td class="A1" id="C1"></td>
+                    <td class="A1" id="C2"></td>
+                    <td class="A1" id="C3"></td>
+                </tr>
+            </table>
+        </div>
+        <div id="Refresh">
+            <input type="button" id="refresh" onclick="location.reload();" name="refresh" value="Refresh" class="btn">
+        </div>
+    </body>
+
+</html>
